@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../../../configs'
 import { CarImages, CarListing } from '../../../configs/schema'
-import { useUser } from '@clerk/clerk-react'
+
 import {desc,eq} from 'drizzle-orm'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import CarItem from '@/components/CarItem'
 import { FaTrashCan } from "react-icons/fa6"
+import { useUser } from '@clerk/clerk-react';
+import AddListing from './../../add-listing';
 
 
-function myListing() {
+
+function MyListing() {
 
     const {user}=useUser();
     const [carList, setCarList]=useState([]);
@@ -32,7 +35,7 @@ function myListing() {
         <div className='flex justify-between items-center'>
             <h2 className='font-bold text-4xl'>My Listing</h2>
             <Link to={'/add-listing'}>
-                <Button className="ml-auto">+ Add New Listing</Button>
+                <Button className="buton">+ Add New Listing</Button>
             </Link>
         </div>
 
@@ -50,4 +53,4 @@ function myListing() {
     </div>
     )
 }
-export default myListing
+export default MyListing
